@@ -1,6 +1,10 @@
 body {
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
+  .weather-app {
+    max-width: 900px;
+    margin: 0 auto;
+  }
   h1 {
     text-align: center;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -14,7 +18,15 @@ body {
   }
   
   .container {
+    
     background-color: #fafa89;
+    background: linear-gradient(90deg, #f7f55f 20%, #b7f75e 100%);
+    margin: 5px auto;
+    padding: 15px 60px;
+    outline: 5px solid #33b0f9;
+    border-radius: 5px;
+  }
+  .container-down {
     background: linear-gradient(90deg, #f7f55f 20%, #b7f75e 100%);
     margin: 5px auto;
     padding: 15px 60px;
@@ -25,9 +37,7 @@ body {
     font-size: 30px;
     
   }
-  img {
-    float: right;
-  }
+  
   .card {
     text-align: center;
     font-size: 20px;
@@ -46,8 +56,16 @@ body {
   }
   form {
     margin: 10px 200px 10px 60px;
+    position: relative;
   }
   #date {
     color: #33b0f9
+  }
+  
+  .image {
+    width: 200px;
+   float: right;
+   margin: 0 5%;
+
   }
   
