@@ -1,7 +1,6 @@
-let curDate = document.querySelector("#date");
-let now = new Date();
+function formatDate(timestamp) {
+let now = new Date(timestamp);
 let todayDate = now.getDate();
-
 let months = [
   "January",
   "February",
@@ -30,13 +29,16 @@ let weeks = [
 let todayWeek = weeks[now.getDay()];
 
 let nowHour = now.getHours();
+if (nowHour < 10) {
+  nowHour = "0" + nowHour;
+}
+console.log(now);
 let nowMinutes = now.getMinutes();
 if (nowMinutes < 10) {
   nowMinutes = "0" + nowMinutes;
 }
-
-curDate.innerHTML = `${todayDate} ${todayMonth}, ${todayWeek}, ${nowHour}:${nowMinutes}`;
-
+return `${todayDate} ${todayMonth}, ${todayWeek}, ${nowHour}:${nowMinutes}`
+}
 
 function searchCity(event) {
   event.preventDefault();
@@ -52,9 +54,6 @@ axios.get(`${apiUrl}`).then(showTemperature);
 let form = document.querySelector("#cityInput");
 form.addEventListener("submit", searchCity);
 
-
-
-  
   function showLocationTemperature (position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
@@ -71,7 +70,9 @@ let button = document.querySelector("#cur");
 button.addEventListener("click", showPosition);
 
 function showTemperature (response) {
-  console.log(response.data)
+  let curDate = document.querySelector("#date");
+  curDate.innerHTML = formatDate(response.data.dt * 1000);
+  console.log(response.data.dt * 1000)
   let temperature = document.querySelector("#temp");
   let currentTemp = Math.round(response.data.main.temp);
   temperature.innerHTML = currentTemp;
