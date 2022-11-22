@@ -90,4 +90,17 @@ function showTemperature (response) {
 
   let weth = document.querySelector("#weth");
   weth.innerHTML = response.data.weather[0].main;
+
+  let iconElement = document.querySelector("#icon");
+  let iconDes = response.data.weather[0].description;
+  console.log(response.data.weather[0].description);
+  if (iconDes === 'clear sky' || iconDes === 'few clouds') {
+    iconElement.setAttribute("src",`src/images/sun.png`)
+  } else if (iconDes === 'overcast clouds' || iconDes === 'broken clouds') {
+    iconElement.setAttribute("src",`src/images/cloud.png`);
+  } else if (iconDes === 'light rain' || iconDes === 'rain') {
+    iconElement.setAttribute("src",`src/images/rain.png`);
+  }
+  
+  
 }
